@@ -1,0 +1,201 @@
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+body {
+  flex-direction: column; /* ahora apila intro arriba y chat-wrapper abajo */
+  align-items: center;
+  font-family: sans-serif;
+  background: #111b21;
+  height: 100dvh; /* altura completa */
+  display: flex;
+  justify-content: center;
+}
+
+/* INTRO */
+.intro {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 32px 16px 20px 16px;
+  background: #111b21;
+  color: #fff;
+  flex-shrink: 0;
+}
+.intro__titulo {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.intro__subtitulo {
+  font-size: 15px;
+  color: #aebac1;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+.intro__presentacion {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+.intro__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #fff;
+}
+.intro__globo {
+  /* Reusa tu estilo de globo, pero para la intro */
+  position: relative;
+  max-width: 75%;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 7.5px;
+  font-size: 15px;
+  line-height: 19px;
+  box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+  word-wrap: break-word;
+  animation: pop 0.18s ease-out;
+  animation: none;
+}
+
+/* Para esconder secciones */
+.oculto {
+  display: none !important;
+}
+
+.intro__boton {
+  margin-top: 20px;
+  margin-left: 68px; /* queda alineado debajo del globo, al lado de la imagen */
+  background: #25d366;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 24px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.intro__boton:hover {
+  background: #128c7e;
+}
+
+.chat-wrapper {
+  /* ya no ocupa el 100% de alto, ocupa lo que queda */
+  flex: 1;
+  min-height: 0; /* clave para que el scroll interno funcione */
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+}
+.chat-wrapper {
+  width: 100%;
+  max-width: 700px;
+  height: 100%;
+  display: flex;
+  flex-direction: column; /* chat arriba, opciones abajo */
+  background: #efeae2;
+}
+
+/* SCROLL */
+.chat-container {
+  flex: 1; /* ocupa todo lo que queda */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 16px;
+  overflow-y: auto; /* scroll arriba y abajo */
+}
+
+/* mensajes estilos */
+.globo {
+  position: relative;
+  max-width: 75%;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 7.5px;
+  font-size: 15px;
+  line-height: 19px;
+  box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+  word-wrap: break-word;
+  animation: pop 0.18s ease-out;
+}
+.globo img, .globo video { 
+  width: 100%; 
+  max-width: 310px; 
+  border-radius: 6px; 
+  display: block; 
+  margin-bottom: 4px; 
+}
+  @keyframes pop {
+  from { 
+  transform: scale(0.9); 
+  opacity: 0; 
+  } to { 
+  transform: scale(1); 
+  opacity: 1; 
+  } 
+}
+
+.globo--con-media { padding: 4px 4px 8px 4px !important; max-width: min(75%, 320px); }
+.globo--con-media p { padding: 4px 8px 0 8px; max-width: 280px; }
+
+.globo--izq { align-self: flex-start; background: #fff; border-top-left-radius: 0; }
+.globo--der { align-self: flex-end; background: #d9fdd3; border-top-right-radius: 0; }
+
+/* === FILA DE MENSAJE CON AVATAR === */
+.mensaje-fila {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  max-width: 85%;
+}
+.mensaje-fila--izq {
+  align-self: flex-start;
+}
+.mensaje-fila--der {
+  align-self: flex-end;
+  justify-content: flex-end;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #fff;
+  /* para que la animación se vea suave */
+  image-rendering: auto;
+}
+
+/* ajuste de los globos cuando están en fila */
+.mensaje-fila .globo {
+  max-width: 100%;
+}
+/* BARRA DE OPCIONES ABAJO */
+.options-bar {
+  background: #f0f0f0;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid #ddd;
+  /* no es fixed, no necesita z-index ni margin */
+  flex-shrink: 0; /* que nunca se achique */
+}
+
+.options-bar button {
+  border: 1px solid #25d366;
+  background: white;
+  color: #075e54;
+  padding: 12px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
+}
+.options-bar button:hover { background: #d9fdd3; }

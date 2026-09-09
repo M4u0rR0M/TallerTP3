@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <!-- Acá metan scripts y css, dejen todo separado, no importa si hacen un html nuevo para el header pero prefiero eso a que me jodan los estilos de los mensajes -->
+  <link rel="stylesheet" href="estilosTexto.css">
+  <script src="FuncionTexto.js"></script>
+</head>
+<body>
+
+<!-- ===== INTRO PREVIA AL CHATBOT ===== -->
+<div class="intro" id="intro">
+  <h1 class="intro__titulo">Guías Interactivas</h1>
+  <p class="intro__subtitulo">Elegí tu juego y te llevo paso a paso, sin perderte.</p>
+
+  <div class="intro__presentacion">
+    <img src="https://via.placeholder.com/80x80.png?text=Bot" alt="Bot" class="intro__avatar">
+    <div class="globo globo--izq intro__globo">
+      <p>¡Hola! Soy tu guía. Abajo podés empezar el chat. ¡Te espero!</p>
+    </div>
+  </div>
+
+  <!-- Botón para entrar al chatbot -->
+  <button class="intro__boton" id="btnEntrar">Entrar al chatbot</button>
+</div>
+
+<!-- Pa que no tape -->
+<div class="chat-wrapper oculto" id="chatWrapper">
+  <!-- Acá se hace el recuadro que contiene la informacion -->
+  <div class="chat-container" id="chat"></div> 
+
+  <!-- Acá se inyectan las 2 opciones -->
+  <div class="options-bar" id="optionsBar"></div>
+</div>
+
+</body>
+</html>
