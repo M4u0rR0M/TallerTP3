@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot</title>
+  <link rel="stylesheet" href="estilosTexto.css">
+  <script src="FuncionTexto.js"></script>
+</head>
+<body>
+
+<!-- MENÚ HISTORIAL IZQUIERDO (fuera del chat para que quede prolijo) -->
+<div class="historial-menu" id="historialMenu">
+  <h2 class="historial-menu__titulo">Historial</h2>
+  <div class="historial-menu__lista" id="historialLista">
+    <p class="historial-menu__vacio">Aún no hay chats guardados</p>
+  </div>
+</div>
+
+<div class="main-content">
+  <!-- INTRO -->
+  <div class="intro" id="intro">
+    <h1 class="intro__titulo">CHATBOT's</h1>
+    <p class="intro__subtitulo">Dependencia Humana de la IA</p>
+
+    <div class="intro__presentacion">
+      <!-- ACÁ VA LA ANIMACIÓN, NO UNA IMAGEN FIJA, TOCAN ÉSTO Y LOS MANDO A LA PAMPA -->
+      <img src="Juania.png.png0001.png" alt="Bot" class="intro__avatar" id="introAvatar">
+      <div class="globo globo--izq intro__globo">
+        <p>¡Hola! Soy tu guía. Abajo podés empezar el chat. ¡Te espero!</p>
+      </div>
+    </div>
+
+    <button class="intro__boton" id="btnEntrar">Entrar al chatbot</button>
+  </div>
+
+  <!-- CHAT -->
+  <div class="chat-wrapper oculto" id="chatWrapper">
+  <div class="chat-container" id="chat"></div>
+  <div class="options-bar" id="optionsBar"></div>
+  
+  <!-- INPUT FALSO -->
+  <div class="fake-input-bar">
+    <div class="fake-input-box">
+      <span class="fake-input-placeholder">Escribe un mensaje</span>
+    </div>
+    <button class="fake-send-btn">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="white">
+        <path d="M1.101 21.757L23.8 12.028 1.101 2.3l.011 7.912 13.623 1.816-13.623 1.798-.011 7.931z"/>
+      </svg>
+    </button>
+  </div>
+</div>
+  </div>
+</div>
+
+</body>
+</html>
