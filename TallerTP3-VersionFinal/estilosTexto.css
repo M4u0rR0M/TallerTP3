@@ -1,0 +1,467 @@
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: #0A192F;
+  height: 100dvh;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+p { color: #fff; }
+
+.oculto { display: none !important; }
+
+@keyframes pop {
+  from { transform: scale(0.9); opacity: 0; } 
+  to { transform: scale(1); opacity: 1; } 
+}
+
+/* ===== LAYOUT PRINCIPAL ===== */
+.main-content {
+  background-color: #1D2D4E;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100dvh;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* ===== MENÚ HISTORIAL ===== */
+.historial-menu {
+  width: 260px;
+  min-width: 260px;
+  background: #091321;
+  border-right: 1px solid #222d34;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  overflow-y: auto;
+  height: 100dvh;
+  flex-shrink: 0;
+  transition: width 0.2s;
+}
+.historial-menu.oculto { display: none !important; }
+
+.historial-menu__titulo {
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+.historial-menu__lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.historial-menu__vacio {
+  color: #8696a0 !important;
+  font-size: 14px;
+}
+.historial-item-nuevo {
+  background: #202c33;
+  border-radius: 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.2s, border 0.2s;
+}
+.historial-item-nuevo:hover {
+  background: #2a3942;
+  border-color: #33414c;
+}
+.historial-item-nuevo__titulo {
+  color: #e9edef;
+  font-size: 14px;
+  font-weight: 600;
+}
+.historial-item-nuevo__fecha {
+  color: #8696a0;
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+/* ===== VISOR MODAL HISTORIAL ===== */
+.visor-historial {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.visor-historial__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(2px);
+}
+.visor-historial__ventana {
+  position: relative;
+  width: 100%;
+  max-width: 768px;
+  height: 85dvh;
+  background: #0A192F;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  animation: pop 0.2s ease-out;
+}
+.visor-historial__header {
+  background: #f0f0f0;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+.visor-historial__header span { font-weight: 700; color: #111b21; }
+.visor-historial__header button {
+  background: #202c33;
+  color: #fff;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.visor-historial__chat {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.visor-historial__chat button { pointer-events: none; }
+
+/* ===== INTRO NUEVA - ICONO GRANDE CENTRADO ===== */
+.intro {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0;
+}
+
+.intro__presentacion {
+  order: 1;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.intro__avatar {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: none;
+}
+
+.intro__titulo {
+  order: 2;
+  font-size: 40px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.intro__subtitulo {
+  order: 3;
+  font-size: 16px;
+  color: #aebac1;
+  margin-bottom: 28px;
+}
+
+/* ESTA ES LA NUEVA CLASE QUE ARREGLA TU P */
+.intro__texto-simple {
+  order: 4;
+  max-width: 520px;
+  margin-bottom: 32px;
+}
+
+.intro__texto-simple p {
+  color: #fff !important;
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 400;
+  text-align: center;
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* Borrá los estilos viejos del globo en la intro */
+.intro__globo {
+  display: none;
+}
+
+.intro__boton {
+  order: 5;
+}
+.intro__boton {
+  order: 5;
+  margin-top: 24px;
+  width: fit-content;
+  background: #81B29A;
+  color: #1a1a1a;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 24px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+.intro__boton:hover {
+  background: #6da28a;
+  transform: translateY(-2px);
+}
+
+/* ===== CHAT ===== */
+.chat-wrapper {
+  width: 100%;
+  max-width: 768px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #0A192F;
+  overflow: hidden;
+  flex: 1;
+  min-height: 0;
+}
+.chat-container {
+  background-color: #1D2D4E;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 24px;
+  overflow-y: auto;
+}
+
+/* GLOBOS */
+.globo {
+  position: relative;
+  max-width: 75%;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 7.5px;
+  font-size: 15px;
+  line-height: 19px;
+  box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+  word-wrap: break-word;
+  animation: pop 0.18s ease-out;
+}
+.globo img, .globo video { 
+  width: 100%; 
+  max-width: 310px; 
+  border-radius: 6px; 
+  display: block; 
+  margin-bottom: 4px; 
+}
+.globo--con-media { padding: 4px 4px 8px 4px !important; max-width: min(75%, 320px); }
+.globo--con-media p { padding: 4px 8px 0 8px; max-width: 280px; }
+.globo--izq { align-self: flex-start; background: #8C9EFF; border-top-left-radius: 0; }
+.globo--der { align-self: flex-end; background: #6C5CE7; border-top-right-radius: 0; }
+
+.mensaje-fila {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  max-width: 85%;
+}
+.mensaje-fila--izq { align-self: flex-start; }
+.mensaje-fila--der { align-self: flex-end; justify-content: flex-end; }
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #fff;
+}
+.mensaje-fila .globo { max-width: 100%; }
+
+/* OPCIONES */
+.options-bar {
+  padding: 12px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  flex-shrink: 0;
+  background: #1D2D4E;
+}
+.options-bar button {
+  background-color: #81B29A;
+  color: #1a1a1a;
+  font-weight: 600;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
+  transition: transform 0.2s, background 0.2s;
+}
+.options-bar button:hover { background: #6da28a; transform: translateY(-1px); }
+.options-bar {
+  border-top: none;
+}
+.fake-input-bar {
+  border-top: none;
+}
+.fake-input-bar {
+  background-color: #1D2D4E;
+  padding: 8px 24px 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.fake-input-box {
+  flex: 1;
+  background: white;
+  border-radius: 21px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+}
+.fake-input-placeholder { color: #667781 !important; font-size: 15px; }
+.fake-send-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #25d366;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== TUS TARJETAS CUSTOM (sin duplicados) ===== */
+.chat-card.left { background-color: #8C9EFF; color: #fff; border-radius: 18px 18px 18px 4px; padding: 14px 18px; }
+.chat-card.right { background-color: #6C5CE7; color: #fff; border-radius: 18px 18px 4px 18px; }
+
+.card-interactiva, .card-uso-invisible-preview, .card-dependencia-conceptos, .card-genera-dependencia-preview, .card-eliza-experimento, .card-eliza-causas, .card-consecuencias { background-color: #8C9EFF; border-radius: 20px; padding: 18px; color: #fff; }
+.visor-subpagina { position: fixed; inset: 0; background-color: #0A192F; z-index: 9999; overflow-y: auto; padding: 20px; }
+.visor-subpagina.oculto { display: none; }
+
+/* ===== TARJETAS Y SUBPÁGINAS - RESTAURADAS DEL VIEJO ===== */
+
+/* ---- General ---- */
+.chat-card.left { background-color: #8C9EFF; color: #fff; border-radius: 18px 18px 18px 4px; padding: 14px 18px; margin-bottom: 12px; }
+.chat-card.right { background-color: #6C5CE7; color: #fff; border-radius: 18px 18px 4px 18px; padding: 14px 18px; margin-bottom: 12px; }
+.card-interactiva { position: relative; overflow: hidden; cursor: pointer; background-color: #8C9EFF; color: #fff; border-radius: 16px; padding: 16px; }
+.card-preview__footer { margin-top: 12px; text-align: center; font-size: 13px; opacity: 0.9; text-decoration: underline; }
+.btn-back { background: transparent; border: none; color: #fff; font-size: 14px; cursor: pointer; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+.btn-flecha-volver { background: transparent; border: none; color: #fff; font-size: 24px; cursor: pointer; margin-bottom: 20px; padding: 5px; }
+
+/* ---- Uso Invisible ---- */
+.card-uso-invisible-preview { background-color: #8395f8; border-radius: 20px; padding: 16px; color: #fff; cursor: pointer; max-width: 320px; }
+.invisible-card-header { font-size: 18px; font-weight: 600; margin-bottom: 14px; }
+.invisible-card-columns { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.col-brain { display: flex; flex-direction: column; align-items: center; flex: 1; }
+.brain-img { width: 100%; max-width: 100px; height: auto; }
+.brain-percentage { font-size: 22px; font-weight: 700; margin-top: 6px; }
+.col-apps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; flex: 1; }
+.app-box { background-color: rgba(255,255,255,0.2); border-radius: 12px; padding: 8px; display: flex; align-items: center; justify-content: center; aspect-ratio: 1; }
+.app-box img { width: 24px; height: 24px; object-fit: contain; }
+.invisible-card-footer { text-align: center; font-size: 12px; opacity: 0.85; margin-top: 14px; }
+
+/* ---- Uso Consciente ---- */
+.card-uso-consciente-preview { background-color: #8395f8; border-radius: 20px; padding: 16px; color: #fff; cursor: pointer; max-width: 320px; text-align: center; }
+.consciente-preview-body { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.consciente-icon-img { width: 60px; height: auto; }
+.preview-footer-text { font-size: 12px; opacity: 0.85; text-decoration: underline; }
+.subpagina-consciente, .subpagina-invisible { display: flex; flex-direction: column; gap: 24px; color: #fff; }
+.grupo-estadistica { display: flex; flex-direction: column; gap: 12px; }
+.grid-personitas { display: grid; grid-template-columns: repeat(12, 1fr); gap: 6px; margin-bottom: 12px; }
+.icon-personita { width: 18px; height: auto; }
+.caja-texto-estadistica { background-color: #e2e4e9; color: #333; padding: 14px 18px; border-radius: 16px; font-size: 13px; text-align: center; margin-bottom: 24px; }
+.caja-texto-estadistica p { color: #000 ;}
+.highlight-purple { color: #6c5ce7; font-weight: 700; }
+.subpagina-header-center { display: flex; justify-content: center; }
+.brain-large-img { width: 140px; height: auto; }
+.subpagina-items-list { display: flex; flex-direction: column; gap: 16px; }
+.item-row { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.15); border-radius: 16px; padding: 12px; }
+.row-icon { width: 36px; height: 36px; object-fit: contain; flex-shrink: 0; }
+.row-text h4 { font-size: 14px; margin: 0 0 4px 0; }
+.row-text p { font-size: 12px; opacity: 0.9; line-height: 1.3; color: #fff; margin: 0; }
+
+/* ---- Dependencia / Conceptos ---- */
+.card-dependencia-conceptos { background-color: #8395f8; border-radius: 20px; padding: 18px; color: #fff; max-width: 300px; }
+.card-title-header { font-size: 16px; font-weight: 600; margin-bottom: 16px; }
+.grid-2x2-conceptos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.concepto-box { background-color: #6c5ce7; border-radius: 16px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; aspect-ratio: 1; }
+.concepto-icon { width: 32px; height: 32px; margin-bottom: 8px; object-fit: contain; }
+.concepto-box span { font-size: 12px; font-weight: 500; line-height: 1.2; }
+
+/* ---- Lo que genera dependencia - preview + subpagina ---- */
+.card-genera-dependencia-preview { background-color: #8395f8; border-radius: 20px; padding: 18px; color: #fff; max-width: 300px; cursor: pointer; }
+.diagrama-preview-center { display: flex; justify-content: center; align-items: center; padding: 20px 0; position: relative; }
+.persona-circle { background: #fff; border-radius: 50%; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center; border: 2px solid #000; z-index: 2; }
+.persona-icon { width: 60px; height: auto; }
+.subpagina-dependencia { display: flex; flex-direction: column; align-items: center; color: #fff; padding: 10px; }
+.subpagina-intro-text { text-align: center; font-size: 15px; line-height: 1.4; max-width: 600px; margin-bottom: 40px; color: #fff; }
+.diagrama-subpagina-container { position: relative; width: 100%; max-width: 500px; height: 360px; display: flex; align-items: center; justify-content: center; }
+.nodo-center { background: #fff; border-radius: 50%; width: 130px; height: 130px; display: flex; align-items: center; justify-content: center; border: 3px solid #000; z-index: 3; }
+.nodo-center-icon { width: 80px; }
+.caja-nodo { position: absolute; background-color: #6c5ce7; border-radius: 16px; padding: 16px; width: 160px; text-align: center; font-size: 13px; font-weight: 500; box-sizing: border-box; z-index: 2; cursor: pointer; transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease; }
+.caja-nodo:hover { transform: scale(1.06); background-color: #5b4bc4; box-shadow: 0 8px 20px rgba(0,0,0,0.25); }
+.top-left { top: 10px; left: 0; } .top-right { top: 10px; right: 0; } .bottom-left { bottom: 10px; left: 0; } .bottom-right { bottom: 10px; right: 0; }
+.lineas-conexion-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+.linea-conexion { fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; opacity: 0.2; transition: opacity 0.3s ease, stroke-width 0.3s ease; }
+.linea-conexion.activa { opacity: 1; stroke-width: 4; }
+
+/* ---- ELIZA ---- */
+.card-eliza-experimento { background-color: #8395f8; border-radius: 20px; padding: 18px; color: #fff; max-width: 320px; }
+.eliza-card-header { font-size: 14px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }
+.eliza-card-subtitle { font-size: 13px; opacity: 0.9; margin-top: 2px; margin-bottom: 14px; }
+.eliza-terminal-box { background-color: #1e1e1e; border-radius: 14px; padding: 12px 14px; font-family: monospace; font-size: 12px; line-height: 1.5; margin-bottom: 14px; }
+.terminal-user { color: #fff; margin: 0 0 6px 0; }
+.terminal-bot { color: #2ecc71; margin: 0; }
+.eliza-card-footer-text { font-size: 12px; line-height: 1.4; opacity: 0.95; margin: 0; color: #fff; }
+.card-eliza-causas { background-color: #8395f8; border-radius: 20px; padding: 18px; color: #fff; max-width: 320px; }
+.eliza-card-title { font-size: 16px; font-weight: 700; margin-bottom: 14px; }
+.eliza-causas-list { display: flex; flex-direction: column; gap: 10px; }
+.causa-box { background-color: rgba(255,255,255,0.25); border-radius: 14px; padding: 12px; }
+.causa-box h4 { margin: 0 0 4px 0; font-size: 13px; font-weight: 600; color: #fff; }
+.causa-box p { margin: 0; font-size: 11px; opacity: 0.9; line-height: 1.3; color: #fff; }
+
+/* ---- Consecuencias ---- */
+.card-consecuencias { background-color: #8C9EFF; border-radius: 22px; padding: 20px; color: #fff; max-width: 380px; box-sizing: border-box; }
+.card-consecuencias__titulo { font-size: 16px; font-weight: 700; margin-bottom: 18px; color: #fff; }
+.card-consecuencias__grid { display: grid; gap: 12px; align-items: start; }
+.card-consecuencias__grid.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.card-consecuencias__grid.grid-2 { grid-template-columns: repeat(2, 1fr); max-width: 260px; }
+.consecuencia-item { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.consecuencia-icon { width: 64px; height: 64px; background-color: #6C5CE7; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 8px; }
+.consecuencia-icon img { width: 34px; height: 34px; object-fit: contain; }
+.consecuencia-item span { font-size: 11px; font-weight: 600; line-height: 1.3; color: #fff; }
+
+/* ---- Extras viejos que usaba el JS ---- */
+.people-grid { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px; }
+.people-grid i { font-size: 14px; color: #606060; }
+.people-grid--1 i:nth-child(-n+10) { color: #805ad5; }
+.people-grid--2 i:nth-child(-n+8) { color: #805ad5; }
+.people-grid--3 i:nth-child(-n+25) { color: #805ad5; }
+.stat-info-box { background: rgba(255,255,255,0.85); color: #333; padding: 10px 14px; border-radius: 12px; font-size: 12px; margin-bottom: 16px; }
+.visor-subpagina { position: fixed; inset: 0; background-color: #0A192F; z-index: 9999; overflow-y: auto; padding: 20px; }
+.visor-subpagina.oculto { display: none; }
